@@ -1,0 +1,159 @@
+@import "./base.scss";
+.login {
+  background-color: #ccc ;
+  font-family: "Poppins", sans-serif;
+  height: 100%;
+  width: 100%;
+
+  .action-box-login{
+    margin: 0.4rem 0 0 0;
+  }
+
+  .login-form-flex{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.6rem;
+  }
+  .github-icon{
+    cursor: pointer;
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+  .oauth-box{
+    display: flex;
+    justify-content: center;
+  }
+  .oauth-line-box{
+    height: 0.6rem;
+    font-size: 0.2rem;
+    color: #cccccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .oauth-line-box:before{
+    content: '';
+    width: 36%;
+    height: 1px;
+    border-bottom: 1px solid #cccccc;
+    display: inline-block;
+    margin-right: 0.2rem;
+  }
+  .oauth-line-box:after{
+    content: '';
+    width: 36%;
+    height: 1px;
+    border-bottom: 1px solid #cccccc;
+    display: inline-block;
+    margin-left: 0.2rem;
+  }
+  .feed-back{
+    height: 0.6rem;
+    font-size: 0.22rem;
+    color: $base-color;
+    text-decoration: underline;
+    justify-content: space-around;
+  }
+  .feedback-link{
+    cursor: pointer;
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    #formContent {
+      -webkit-border-radius: 0.2rem 0.2rem 0.2rem 0.2rem;
+      border-radius: 0.2rem 0.2rem 0.2rem 0.2rem;
+      background: #fff;
+      padding: 0.6rem;
+      width: 90%;
+      max-width: 5.6rem;
+      height: 9rem;
+      position: relative;
+      padding: 0;
+      -webkit-box-shadow: 0 0.6rem 1.2rem 0 rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0.6rem 1.2rem 0 rgba(0, 0, 0, 0.3);
+      text-align: center;
+
+      h2 {
+        text-align: center;
+        font-size: 0.36rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        display: inline-block;
+        margin: 0.3rem 0.38rem;
+        color: #cccccc;
+      }
+
+      .active {
+        color: $base-color;
+      }
+
+      .register-form{
+        min-height: 4.2rem;
+      }
+
+    }
+
+    .input-class{
+      height: 100%;
+      border: none;
+      color: #0d0d0d;
+      padding: 0.1rem;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.24rem;
+      width: 60%;
+      border-bottom: 0.02rem solid $base-gray-color;
+      transition: all 0.5s ease-in-out;
+    }
+    .input-class:focus{
+      border-bottom: 0.02rem solid $base-color;
+    }
+    .input-class::placeholder{
+      background-color: #fff;
+    }
+
+    .normal-word {
+      font-size: 0.28rem;
+    }
+    .first{
+      line-height: 0.4rem;
+    }
+
+    .fadeInDown {
+      animation-name: fadeInDown;
+      animation-fill-mode: both;
+    }
+    @-webkit-keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+      }
+
+      100% {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+      }
+
+      100% {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+}
+
+*:focus {
+  outline: none;
+}

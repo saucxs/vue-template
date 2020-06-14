@@ -1,0 +1,28 @@
+@import "./base.scss";
+
+/*聊天页弹层*/
+.chat-info-modal{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #eeeeee;
+  opacity: 0;
+  z-index: 99999;
+}
+.chat-info{
+  height: calc(100vh - 1rem);
+  width: 4.2rem;
+  position: absolute;
+  top: 0.98rem;;;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: #eeeeee;
+  border: 1px solid $gray-color-light;
+  opacity: 0.97;
+  z-index: 999999;
+}
+
+
