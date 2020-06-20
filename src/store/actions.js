@@ -2,7 +2,7 @@ import Api from "../api/api";
 import * as types from "./mutation-types";
 
 /* 注册-激活 */
-export const registry = ({commit}, params) => {
+export const registry = (params) => {
   return Api.registry(params).then(res => {
     return res;
   }).catch(err => {

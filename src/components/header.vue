@@ -33,11 +33,6 @@
 
       }
     },
-     // beforeRouteEnter: (to, from, next) => {
-     //   next(vm => {
-     //     vm.getUserInfo();
-     //   });
-     // },
     computed: {
       ...mapGetters([
         "userInfo"

@@ -39,7 +39,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import router from '../../router';
 export default {
   name: 'login',
   data() {
@@ -66,12 +65,28 @@ export default {
       };
       if (name && password) {
         this.login(param).then(res => {
-          if (res.errno == 0) {
-            this.$message.success(res.errmsg || '登陆成功');
+          console.log(res, 'res--------')
+          if (res.success) {
+            localStorage.setItem("XXXUserToken", res.token);
+            localStorage.setItem("XXXUserInfo", JSON.stringify(res.userInfo));
+            this.$message({
+              message: res.message || '登陆成功',
+              type: "success"
+            });
             this.$router.push({ path: '/writeWeekly' });
           } else {
-            this.$message.error(res.errmsg || '服务开小差');
+            console.log(res.message, 'message')
+             this.$message({
+              message: res.message || '服务开小差',
+              type: "warning"
+            });
           }
+        }).catch(err => {
+          console.log(err)
+          this.$message({
+            message: '服务器出错啦',
+            type: "error"
+          });
         });
       }
     },
@@ -79,7 +94,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .loginHeader {
   height: 60px;
   padding: 14px 0 14px 10%;

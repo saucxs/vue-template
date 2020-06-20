@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from "@/pages/home";
 import Login from "@/pages/login/index";
 import Registry from "@/pages/registry/index";
+import WriteWeekly from "@/pages/writeWeekly/index";
 
 Vue.use(Router)
 
@@ -20,6 +22,22 @@ const router = new Router({
       path: "/registry",
       component: Registry
     },
+    {
+      path: '/',
+      name: 'home',
+      meta: {
+        key: '1'
+      },
+      component: Home,
+      children: [{
+        path: '/writeWeekly',
+        name: 'writeWeekly',
+        meta: {
+          key: '1-1'
+        },
+        component: WriteWeekly
+      }]
+    },
   ]
 })
 
@@ -33,11 +51,17 @@ router.beforeEach((to, from, next) => {
       return true
     }
   })
-  if (!localStorage.HappyChatUserToken) {
+  if (!localStorage.XXXUserToken) {
     if (flag) {
       next()
     } else {
       next("/login");
+    }
+  } else {
+    if (flag) {
+      next("/writeWeekly");
+    } else {
+      next();
     }
   }
 });

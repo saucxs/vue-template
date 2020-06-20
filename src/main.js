@@ -1,12 +1,21 @@
+// import Vue from 'vue'
+// import App from './App.vue'
+
+// Vue.config.productionTip = false
+
+// new Vue({
+//   render: h => h(App),
+// }).$mount('#app')
+
 //  The Vue build version to load with the `import` command
 //  (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import "@/assets/css/index.scss"
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css' 
 import VueClipboard from 'vue-clipboard2'
-import Loading from './components/Loading/index'
 
 /* 引入全局过滤器 */
 import * as fliterCommon from '../src/utils/common'
@@ -23,18 +32,15 @@ Vue.directive('focus', {
 import scrollDirective from '../src/utils/scroll';
 Vue.directive('scroll', scrollDirective)
 
-Vue.use(Loading)
+Vue.use(ElementUI)
 
 Vue.use(VueClipboard)
-
-Vue.config.productionTip = false;
 
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  // el: '#app',
+  render: h => h(App),
   router,
   store,
-  components: { App },
-  template: '<App/>'
-})
+}).$mount('#app')

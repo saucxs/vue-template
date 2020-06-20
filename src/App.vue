@@ -5,7 +5,6 @@
 </template>
 
 <script>
-  import Api from "./api/api";
   const App = {
     name: 'App',
     created() {
@@ -21,4 +20,6 @@
   export default App
 </script>
 
+<style>
 
+</style>

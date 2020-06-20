@@ -14,7 +14,6 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from "vuex";
   import headerBar from '../components/header'
   import menuBar from "../components/menu";
   import footerBar from "../components/footer";
@@ -32,7 +31,7 @@
   }
 </script>
 
-<style lang="postcss">
+<style lang="less">
   html{
     height: 100%;
   }

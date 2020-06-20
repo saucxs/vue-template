@@ -8,11 +8,11 @@ let scrollCallback = function(callback, el) {
 }
 let callBackWarpped;
 export default {
-  bind: function(el, binding, vnode) {
+  bind: function(el, binding) {
     callBackWarpped = scrollCallback.bind({}, binding.value, el);
     window.addEventListener("scroll", callBackWarpped, true)
   },
-  unbind: function(el) {
+  unbind: function() {
     window.removeEventListener("scroll", callBackWarpped, true)
   }
 }

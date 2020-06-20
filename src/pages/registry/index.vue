@@ -49,9 +49,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import router from '../../router';
 export default {
-  name: 'login',
+  name: 'registry',
   data() {
     return {
       flag: 'registry',
@@ -76,11 +75,18 @@ export default {
       };
       if (this.username && this.password && this.email) {
         this.registry(param).then(res => {
+          console.log(res, 'res')
           if (res.success) {
-            this.$message.success(res.message || '注册成功');
+            this.$message({
+              type: 'success',
+              message: res.message || '注册成功'
+            });
             this.$router.push({ path: '/login' });
           } else {
-            this.$message.error(res.message || '服务开小差');
+            this.$message({
+              type: 'warning',
+              message: res.message || '服务开小差'
+            });
           }
         });
       }
@@ -89,7 +95,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .loginHeader {
   height: 60px;
   padding: 14px 0 14px 10%;
@@ -109,12 +115,6 @@ export default {
 .login_contenter {
   width: 100%;
   background-position: 100% 100%;
-}
-.login_contenter_bg {
-  position: absolute;
-  z-index: -100;
-  width: 100%;
-  height: 490px;
 }
 .content_box {
   width: 805px;
@@ -231,14 +231,6 @@ input:focus::-webkit-input-placeholder {
 .registerBtn a {
   text-decoration: none;
   color: #5375f1;
-}
-.showUserTips {
-  display: block;
-  width: 100%;
-  border: 1px solid red;
-  float: left;
-  margin-top: -20px;
-  z-index: 1000;
 }
 .border {
   border: 1px solid #55aaff;

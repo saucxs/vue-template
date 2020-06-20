@@ -17,15 +17,6 @@
          <i class="el-icon-location"></i>
          <span slot="title">模块2</span>
        </el-menu-item>
-      <!--<el-submenu index="/aManage">-->
-        <!--<template slot="title">-->
-          <!--<i class="el-icon-location"></i>-->
-          <!--<span slot="title">模块管理一</span>-->
-        <!--</template>-->
-        <!--<el-menu-item index="/aManage">-->
-          <!--<template slot="title">XXX管理</template>-->
-        <!--</el-menu-item>-->
-      <!--</el-submenu>-->
     </el-menu>
   </div>
 </template>
@@ -49,12 +40,12 @@
   };
 </script>
 
-<style lang="postcss" scoped>
+<style lang="less" scoped>
   .menu {
     transition: width 0.28s ease-out;
     width: 180px;
     background: #545c64;
-    & .el-menu{
+    .el-menu{
       width: 100%;
       border-right: none;
       overflow: auto;
