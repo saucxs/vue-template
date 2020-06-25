@@ -9,24 +9,48 @@
       router = router
       active-text-color="#ffd04b"
       :default-active="$route.path">
-      <el-menu-item index="/writeWeekly">
-        <i class="el-icon-menu"></i>
-        <span slot="title">模块1</span>
-      </el-menu-item>
-       <el-menu-item index="/weeklyList">
-         <i class="el-icon-location"></i>
-         <span slot="title">模块2</span>
-       </el-menu-item>
-    </el-menu>
+      <div v-if="menuList.length > 0">
+        <template v-for="item in menuList[0].children">
+         <el-submenu :key="item.key" v-if="item.isHasChild" :index="item.path">
+           <template slot="title">
+             <i :class="item.icon"></i>
+             <span>{{item.meta.name}}</span>
+           </template>
+           <template v-for="child in item.children">
+             <el-menu-item :key="child.path" :index="child.path">
+               <router-link :to="child.path">
+                 {{child.meta.name}}
+               </router-link>
+             </el-menu-item>
+           </template>
+         </el-submenu>
+         <el-menu-item v-if="!item.isHasChild" :key="item.path" :index="item.path">
+           <router-link :to="item.path">
+             <i :class="item.icon"></i>{{item.meta.name}}
+           </router-link>
+         </el-menu-item>
+        </template>
+      </div>
+      </el-menu>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
   export default {
-    name: "asideItem",
+    name: "menu",
     data(){
       return{
         router: true
+      }
+    },
+    computed: {
+      ...mapGetters([
+        "userInfo",
+      ]),
+      menuList () {
+        const finalyMenu = this.$router.options.routes.filter(item => item.meta.key !== '0');
+        return finalyMenu;
       }
     },
     methods: {

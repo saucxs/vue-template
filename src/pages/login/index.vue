@@ -57,13 +57,11 @@ export default {
       this.$router.push({ path: '/registry' });
     },
     submit() {
-      var name = this.username;
-      var password = this.password;
       var param = {
-        name,
-        password,
+        name: this.username,
+        password: this.password,
       };
-      if (name && password) {
+      if (this.username && this.password) {
         this.login(param).then(res => {
           console.log(res, 'res--------')
           if (res.success) {

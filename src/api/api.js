@@ -49,8 +49,8 @@ export default {
     return service.post(`${baseURL}/login`, params)
   },
   /* 注册 - post */
-  registry: (params) => {
-    return service.post(`${baseURL}/registry`, params)
+  register: (params) => {
+    return service.post(`${baseURL}/register`, params)
   },
 /* *
  * API demo

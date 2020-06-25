@@ -10,7 +10,7 @@
         <el-col :span="11">
           <el-row type="flex" justify="end">
             <el-dropdown>
-              <div class="header-user-name">{{userInfo.username}}<i class="el-icon-caret-bottom el-icon--right"></i></div>
+              <div class="header-user-name">{{userInfo.name}}<i class="el-icon-caret-bottom el-icon--right"></i></div>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item>
                   <a @click="signOut()">退出</a>
@@ -25,22 +25,23 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex';
+  import { mapActions } from 'vuex';
    export default {
     name: 'Header',
     data() {
       return {
-
+        userInfo: {}
       }
     },
     computed: {
-      ...mapGetters([
-        "userInfo"
-      ])
+      
+    },
+    mounted() {
+      this.userInfo = JSON.parse(localStorage.getItem("XXXUserInfo"));
+      console.log(localStorage.getItem("XXXUserInfo"), '======');
     },
      methods: {
        ...mapActions([
-         "getUserInfo",
          "logout"
        ]),
        signOut() {
@@ -56,7 +57,7 @@
 
 </script>
 
-<style lang="postcss" scoped>
+<style lang="less" scoped>
 .header {
   color: #fff;
   font-size: 14px;
@@ -65,14 +66,16 @@
   line-height: 46px;
   font-weight: 700;
   box-shadow: 0 2px 10px 0 rgb(0, 0, 0, 0.4);
-  & .header-box{
-    width: 1360px;
+  .header-box{
     margin: 0 auto;
     background: #3a79ff;
   }
-  & .header-user-name {
+  .header-user-name {
     cursor: pointer;
     color: #fff;
+  }
+  .el-dropdown {
+    color: #ffffff;
   }
 }
 </style>

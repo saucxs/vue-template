@@ -63,7 +63,7 @@ export default {
     ...mapGetters(['systemName']),
   },
   methods: {
-    ...mapActions(['registry']),
+    ...mapActions(['register']),
     goLogin() {
       this.$router.push({ path: '/login' });
     },
@@ -74,7 +74,8 @@ export default {
         email: this.email,
       };
       if (this.username && this.password && this.email) {
-        this.registry(param).then(res => {
+        console.log(param, 'param=========');
+        this.register(param).then(res => {
           console.log(res, 'res')
           if (res.success) {
             this.$message({
