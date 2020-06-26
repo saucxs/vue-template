@@ -13,7 +13,7 @@
               <div class="header-user-name">{{userInfo.name}}<i class="el-icon-caret-bottom el-icon--right"></i></div>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item>
-                  <a @click="signOut()">退出</a>
+                  <div @click="signOut()">退出</div>
                 </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
@@ -38,19 +38,16 @@
     },
     mounted() {
       this.userInfo = JSON.parse(localStorage.getItem("XXXUserInfo"));
-      console.log(localStorage.getItem("XXXUserInfo"), '======');
     },
      methods: {
        ...mapActions([
          "logout"
        ]),
        signOut() {
-         this.logout().then(res => {
-           if(res.errno == 0){
-             this.$router.push({ path: '/login' });
-             this.$store.commit("USER_INFO", {});
-           }
-         })
+         localStorage.removeItem("XXXUserInfo");
+         localStorage.removeItem("XXXUserToken");
+         this.$store.commit('userInfoMutation', {});
+         this.$router.push({ path: '/login' }); 
        }
      }
   }
